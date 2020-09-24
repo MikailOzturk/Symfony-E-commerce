@@ -1,0 +1,66 @@
+
+<div class="cat_menu_container">
+    <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
+        <div class="cat_burger"><span></span><span></span><span></span></div>
+        <div class="cat_menu_text">categories</div>
+    </div>
+
+
+
+         {% for cat in cats %}
+                {{ cat|raw  }}
+            {% endfor %}
+
+
+
+</div>
+
+
+<div class="main_nav_menu ml-auto">
+    <ul class="standard_dropdown main_nav_dropdown">
+        <li><a href="{{ path('home') }}">Anasayfa<i class="fas fa-chevron-down"></i></a></li>
+
+
+        <li class="hassubs">
+            <a href="#">Pages<i class="fas fa-chevron-down"></i></a>
+            <ul>
+                <li><a href="shop.html">Hakkımızda<i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="product.html">İletişim<i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="blog.html">Referances<i class="fas fa-chevron-down"></i></a></li>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="{{ path('orders_index') }}">Siparişlerim<i class="fas fa-chevron-down"></i></a></li>
+                    <li><a href="{{ path('shopcart_index') }}">Ürünlerim<i class="fas fa-chevron-down"></i></a></li>
+
+                {% endif %}
+            </ul>
+        </li>
+        <li><a href="{{ path('hakkimizda') }}">Hakkımızda<i class="fas fa-chevron-down"></i></a></li>
+        <li><a href="{{ path('iletisim') }}">İletişim<i class="fas fa-chevron-down"></i></a></li>
+        <li><a href="{{ path('referans') }}">Referans<i class="fas fa-chevron-down"></i></a></li>
+        <li class="hassubs" style="margin-left: 70px;">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="#">Hesap<i class="fas fa-chevron-down"></i></a>
+            <ul>
+                <li>
+                    <a href="{{ path('shopcart_index') }}">Hesabım<i class="fas fa-chevron-down"></i></a>
+
+                </li>
+                <li><a href="{{ path('orders_index') }}">Siparişlerim<i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="{{ path('shopcart_index') }}">Ürünlerim<i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="{{ path('app_logout') }}">Çıkış<i class="fas fa-chevron-down"></i></a></li>
+            </ul>
+            {% else %}
+            <a href="">Giriş İşlemi<i class="fas fa-chevron-down"></i></a>
+                <ul>
+                    <li>
+                        <a href="{{ path('new_user') }}">Üye Ol<i class="fas fa-chevron-down"></i></a>
+
+                    </li>
+                    <li><a href="{{ path('app_login') }}">Giriş<i class="fas fa-chevron-down"></i></a></li>
+
+                </ul>
+            {% endif %}
+        </li>
+    </ul>
+
+</div>

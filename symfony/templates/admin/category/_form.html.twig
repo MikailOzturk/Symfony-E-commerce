@@ -1,0 +1,93 @@
+
+
+<form class="form-horizontal" method="post">
+    <div class="row clearfix">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+            <label for="email_address_2">Üst Kategori</label>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+            <div class="form-group">
+                <div class="form-line">
+                    <select name="category[parentid]" class="form-control">
+
+                        {% if category.parentid!=0 %}
+                        <option value="0">Ana Katagori</option>
+                        {% else %}
+                        <option value="0">Ana Katagori</option>
+                        {% endif %}
+                        {% for cat in catlist %}
+                        <option value="{{ cat.id }}">{{ cat.title }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+            <label for="email_address_2">Title(Başlık)</label>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text"  name="category[title]" value="{{ category.title }}" class="form-control" placeholder="Title gir">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+            <label >Anahtar Kelimeler</label>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text" name="category[keywords]" value="{{ category.keywords }}"  class="form-control" placeholder="Anahtar Kelime gir">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+            <label >Description(Kısa Açıklama)</label>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text" name="category[description]" value="{{ category.description }}"  class="form-control" placeholder="Açıklama gir">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row clearfix">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+            <label >Aktif Durumu</label>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+            <div class="form-group">
+                <div class="form-line ">
+                    <select name="category[status]" class="form-control">
+                        <option>{{ category.status }}</option>
+                        <option>True</option>
+                        <option>False</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="row clearfix">
+        <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+            <input type="submit" class="btn btn-primary m-t-15 waves-effect" value="kaydet">
+        </div>
+    </div>
+</form>

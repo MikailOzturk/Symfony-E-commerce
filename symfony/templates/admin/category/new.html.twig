@@ -1,0 +1,39 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Üye Listesi{% endblock %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h1>
+                    KATEGORİ EKLEME
+
+                </h1>
+
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            Yeni Kategori Ekle
+
+                        </h2>
+
+                    </div>
+                    <div class="body table-responsive">
+
+                        {{ include('admin/category/_form.html.twig') }}
+
+                        <a href="{{ path('admin_category_index') }}" class="btn btn-primary m-t-15 waves-effect" >back to list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
+

@@ -1,0 +1,130 @@
+
+<form class="form-horizontal" method="post" >
+
+    <div class="row clearfix">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+            <label for="email_address_2">Ödencek Tutar:</label>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text"  name="orders[amount]" value="{{ total }}" class="form-control" placeholder="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div><h4> Kargo Alıcı Bilgileri</h4></div>
+    <hr>
+    <div class="row clearfix">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+            <label >Adı Soyadı:</label>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text" name="orders[name]" value="{{ app.user.name }}"  class="form-control" placeholder="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+            <label >Adresi:</label>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text" name="orders[address]" value="{{ app.user.address }}"  class="form-control" placeholder="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+            <label >Şehir:</label>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text" name="orders[city]" value="{{ app.user.city }}"  class="form-control" placeholder="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+            <label >Telefon:</label>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text" name="orders[phone]" value="{{ app.user.phone }}"  class="form-control" placeholder="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div><h4> Kredi Kartı Bilgileri</h4></div>
+    <hr>
+    <div class="row clearfix">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+            <label >Adı Soyadı:</label>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text" name="cardholdername" value=""  class="form-control" placeholder="Kart Adı Soyadı">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+            <label >Kart Numarası:</label>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text" name="cardnumber" value=""  class="form-control" placeholder="Kart Numarası">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+            <label >Son Kullanma Tarihi:</label>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text" name="cardvaliddates" value=""  class="form-control" placeholder="AY/YIL">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+            <label >Güvenlik Kodu:</label>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text" name="cardsecuritycode" value=""  class="form-control" placeholder="Güvenlik Kodu">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <input type="hidden" name="token" value="{{ csrf_token('form_order') }}">
+
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+            <input type="submit" class="btn btn-block btn-lg btn-primary waves-effect" value="Satın Al">
+        </div>
+    </div>
+</form>

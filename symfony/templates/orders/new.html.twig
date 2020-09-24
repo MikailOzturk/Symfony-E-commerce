@@ -1,0 +1,85 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Shopcart  {% endblock %}
+
+{% block sidebar %} {{ include('home/_sidebar.html.twig') }} {% endblock %}
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/') }}styles/shop_styles.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/') }}styles/shop_responsive.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/') }}plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+{% endblock %}
+
+
+{% block content %}
+
+
+    <!-- Home -->
+
+    <div class="home">
+        <div class="home_background parallax-window" data-parallax="scroll"
+             data-image-src="{{ asset('home') }}/images/shop_background.jpg"></div>
+        <div class="home_overlay"></div>
+        <div class="home_content d-flex flex-column align-items-center justify-content-center">
+            <h2 class="home_title"> ShopCart </h2>
+            Kullanıcı Adı: {{ app.user.name }}
+        </div>
+    </div>
+
+    <!-- Shop -->
+
+    <div class="shop">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+
+                    <div class="cat_burger"><span></span><span></span><span></span></div>
+                    <div class="shop_sidebar">
+                        <div class="sidebar_section">
+                            <div class="cat_menu_text">Kullanıcı</div>
+                            <ul class="sidebar_categories">
+                                <li><a href="#">Bilgilerim</a></li>
+                                <li><a href="#">Düzenle</a></li>
+                                <li><a href="#">Siparişlerim</a></li>
+                                <li><a href="#">Sepetim</a></li>
+                                <li><a href="#">Favori Ürünlerim</a></li>
+                                <li><a href="#">Sipariş Geçmişi</a></li>
+                                <li><a href="#">Yorumlarım</a></li>
+                                <li><a href="{{ path('app_logout') }}">Çıkış</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="shop_content">
+                        {{ include('messages.html.twig') }}
+                        <div class="shop_bar clearfix">
+                            <div class="shop_product_count"><strong>Orders İtems</strong></div>
+                        </div>
+                        <br>
+
+    {{ include('orders/_form.html.twig') }}
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('home/') }}js/shop_custom.js"></script>
+    <script src="{{ asset('home/') }}plugins/Isotope/isotope.pkgd.min.js"></script>
+    <script src="{{ asset('home/') }}plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="{{ asset('home/') }}plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="{{ asset('home/') }}js/shop_custom.js"></script>
+{% endblock %}

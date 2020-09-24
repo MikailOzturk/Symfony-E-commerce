@@ -1,0 +1,36 @@
+
+
+
+<!-- Owl Carousel 1 -->
+<div id="owl-carousel-1" class="owl-carousel owl-theme center-owl-nav" style="width: 80%;margin: 0 auto;">
+    <!-- ARTICLE -->
+
+    {% for rs in sliders %}
+    <article class="article thumb-article" >
+        <a href="{{ path('product_detail', {'id':rs.id}) }}">
+        <div class="article-img">
+
+            <img src="{{ asset('uploads') }}/images/{{ rs.image }}" alt="" width="400" height="400">
+
+        </div>
+        </a>
+        <div class="article-body">
+            <ul class="article-info">
+                <li class="article-category"><a href="#">{{ rs.price }} TL</a></li>
+                <li class="article-type"><i class="fa fa-camera"></i></li>
+            </ul>
+            <h2 class="article-title"><a href="#">{{ rs.title }}</a></h2>
+            <ul class="article-meta">
+                <li><i class="fa fa-clock-o"></i> January 31, 2017</li>
+                <li><i class="fa fa-comments"></i> 33</li>
+            </ul>
+        </div>
+    </article>
+    <!-- /ARTICLE -->
+    {% endfor %}
+
+
+</div>
+
+
+<!-- /Owl Carousel 1 -->

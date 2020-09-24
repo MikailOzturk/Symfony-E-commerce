@@ -1,0 +1,28 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Referans {{ data[0].title }} {% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }} {% endblock %}
+{% block sidebar %} {{ include('home/_sidebar.html.twig') }} {% endblock %}
+
+{% block content %}
+
+
+<div class="single_post">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="single_post_title">Hakkımızda</div>
+                <div class="single_post_text">
+                    <p>
+                        {{ data[0].referances|raw }}
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

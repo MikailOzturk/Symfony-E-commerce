@@ -1,0 +1,163 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Order List  {% endblock %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('home') }}/styles/bootstrap4/bootstrap.min.css">
+    <link href="{{ asset('home') }}/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('home') }}/styles/cart_styles.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('home') }}/styles/cart_responsive.css">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/') }}styles/shop_styles.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/') }}styles/shop_responsive.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/') }}plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+{% endblock %}
+
+{% block body %}
+    <br>
+    <br>
+    <div class="col-lg-9">
+        <div class="shop_content">
+            {{ include('messages.html.twig') }}
+            <div class="shop_bar clearfix">
+                <div class="shop_product_count"><h3><strong>Order Detail</strong></h3></div>
+            </div>
+
+
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Id </th>
+                    <td>{{ order.id }}</td>
+                </tr>
+                <tr>
+                    <th>Userid </th>
+                    <td>{{ order.userid }}</td>
+                </tr>
+                <tr>
+                    <th>Amount </th>
+                    <td>{{ order.amount }}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ order.name }}</td>
+                </tr>
+                <tr>
+                    <th>Address </th>
+                    <td>{{ order.address }}</td>
+                </tr>
+                <tr>
+                    <th>City </th>
+                    <td>{{ order.city }}</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>{{ order.phone }}</td>
+                </tr>
+
+                <form action="{{ path('admin_orders_updatev', {'id': order.id}) }}"method="post">
+
+                    <tr>
+                        <th>Admin Note</th>
+                        <td><textarea name="note" cols="100" rows="3">{{ order.note }}</textarea></td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td><select name="status">
+                                <option>{{ order.status }}</option>
+                                <option>Accepted</option>
+                                <option>inShipping</option>
+                                <option>Canceled</option>
+                                <option>Complated</option>
+                            </select>
+                            <input type="submit" value="Guncelle">
+                        </td>
+                    </tr>
+                </form>
+
+
+                <tr>
+                    <th>Note </th>
+                    <td>{{ order.note }}</td>
+                </tr>
+                <tr>
+                    <th>Status </th>
+                    <td>{{ order.status }}</td>
+                </tr>
+
+                </tbody>
+            </table>
+            <hr><br>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Product Name</th>
+                    <th>Sale Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for rs in orderdetail %}
+                    <tr>
+                        <td>{{ rs.id }}</td>
+                        <td>{{ rs.name }}</td>
+                        <td>{{ rs.price }}</td>
+                        <td>{{ rs.quantity }}</td>
+                        <td>{{ rs.amount }}</td>
+                        <td>{{ rs.status }}</td>
+
+
+                    </tr>
+
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="5">  <b>Toplam Alışveriş Tutarı: {{ order.amount }}</b>  </td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+
+            <a href="{{ path('orders_index') }}">back to list</a>
+
+
+
+        </div>
+
+    </div>
+    <br>
+    <br>
+
+
+
+{% endblock %}
+
+        {% block javascripts %}
+
+            <script src="{{ asset('home') }}/js/jquery-3.3.1.min.js"></script>
+            <script src="{{ asset('home') }}/styles/bootstrap4/popper.js"></script>
+            <script src="{{ asset('home') }}/styles/bootstrap4/bootstrap.min.js"></script>
+            <script src="{{ asset('home') }}/plugins/greensock/TweenMax.min.js"></script>
+            <script src="{{ asset('home') }}/plugins/greensock/TimelineMax.min.js"></script>
+            <script src="{{ asset('home') }}/plugins/scrollmagic/ScrollMagic.min.js"></script>
+            <script src="{{ asset('home') }}/plugins/greensock/animation.gsap.min.js"></script>
+            <script src="{{ asset('home') }}/plugins/greensock/ScrollToPlugin.min.js"></script>
+            <script src="{{ asset('home') }}/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+            <script src="{{ asset('home') }}/plugins/slick-1.8.0/slick.js"></script>
+            <script src="{{ asset('home') }}/plugins/easing/easing.js"></script>
+            <script src="{{ asset('home') }}/js/custom.js"></script>
+            <script src="{{ asset('home/') }}js/shop_custom.js"></script>
+            <script src="{{ asset('home/') }}plugins/Isotope/isotope.pkgd.min.js"></script>
+            <script src="{{ asset('home/') }}plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+            <script src="{{ asset('home/') }}plugins/parallax-js-master/parallax.min.js"></script>
+            <script src="{{ asset('home/') }}js/shop_custom.js"></script>
+        {% endblock %}

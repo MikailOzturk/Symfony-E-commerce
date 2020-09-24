@@ -1,0 +1,78 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Üye Listesi{% endblock %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h1>
+                    ÜYE LİSTESİ
+                    <small><a href="{{ path('admin_user_new') }}" class="btn btn-primary waves-effect" >Üye Ekleme</a> </small>
+                </h1>
+
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            Üye Listesi
+
+                        </h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
+                                    <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
+                                    <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+
+                                <th>Id</th>
+                                <th>Adı Soyadı</th>
+                                <th>Email</th>
+                                <th>Durum</th>
+                                <th>Roller</th>
+                                <th>Düzenle</th>
+                                <th>Sil</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            {% for row in users %}
+                                <tr>
+                                    <td>{{ row.id }}</td>
+                                    <td> {{ row.name }} </td>
+                                    <td>{{ row.email }}</td>
+                                    <td>{{ row.status }}</td>
+                                    <td>{% for item in row.roles %}
+                                        {{ item }}
+                                        {% endfor %}
+                                    </td>
+                                    <td><a href="{{ path('admin_user_edit', {'id':row.id}) }}" class="btn btn-success waves-effect" >Düzenle </a></td>
+                                    <td><a href="{{ path('admin_user_delete', {'id':row.id}) }}" class="btn btn-danger waves-effect" onclick="return confirm('Silinecek. Emin misiniz?');" >Sil </a></td>
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

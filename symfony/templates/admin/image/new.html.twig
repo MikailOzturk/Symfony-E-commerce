@@ -1,0 +1,10 @@
+
+    <h1>Add new Image to Gallery</h1>
+
+    {{ include('admin/image/_form.html.twig') }}
+
+    {% for image in imagelist %}
+    <img src="{{ asset('uploads') }}/images/{{ image.image }}">
+        <a href="{{ path('admin_image_del', {'id':image.id, 'pid':image.productid}) }}" class="btn btn-danger waves-effect" onclick="return confirm('Silinecek. Emin misiniz?');" >Sil </a>
+    {% endfor %}
+
